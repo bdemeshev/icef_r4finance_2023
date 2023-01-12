@@ -40,7 +40,7 @@ Part 1: introduction into R
 
 [Part I videos](....)
 
-[Telegra chat](https://t.me/+M-2EsPzrZlYzYWVi)
+[Telegram chat](https://t.me/+M-2EsPzrZlYzYWVi)
 
 
 #### Home assignments
