@@ -38,18 +38,16 @@ Part 1: introduction into R
 
 #### Spring 2023 term
 
-[Part I videos](....)
+[Part I videos](https://disk.yandex.com.ge/d/Na2iRE556P8Ptg)
 
 [Telegram chat](https://t.me/+M-2EsPzrZlYzYWVi)
 
 
 #### Home assignments
 
-1. Register on [datacamp](https://www.datacamp.com/).
+1. Join the datacamp group [datacamp](https://www.datacamp.com/groups/shared_links/81d77a56b3ac69eab65d71bba6e31c29a86a51f2bcb82b091e31e2b187655aa4) using @edu.hse.ru email adress.
 
-2. Fill in the [form](....). 
-
-3. Complete the courses 
+2. Complete the courses 
 
 [Forecasting using R](https://www.datacamp.com/courses/forecasting-using-r)
 
