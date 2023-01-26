@@ -7,6 +7,7 @@ url = 'https://github.com/bdemeshev/webinar_eusp_forecasting_r_2021_03_13/raw/ma
 
 library(fpp3) # collection of packages to work with time series
 library(rio) # import/export various formats
+library(stringr) # string operations
 
 # if you are lucky
 # data = import('filename')
@@ -30,10 +31,10 @@ d2 = data[-(1:3), ]
 
 
 unique(d2$code_region)
-# split column into code and region
+# split column into code and region [SOLVED]
 
 unique(d2$unit)
-# junk column
+# junk column [SOLVED]
 
 unique(d2$period)
 # remove aggregate rows
@@ -41,5 +42,20 @@ unique(d2$period)
 
 
 d3 = select(d2, -unit)
+# old syntax: 
+# d3 = d2[, -2]
 glimpse(d3)
 
+?select
+d4 = mutate(d3, code_region = str_trim(code_region))
+unique(d4$code_region)
+
+
+?separate
+
+d5 = separate(d4, code_region, into = c('code', 'region'),
+              sep = ' ', extra = 'merge')
+glimpse(d5)
+
+d6 = mutate(d5, code = as.numeric(code))
+glimpse(d6)
