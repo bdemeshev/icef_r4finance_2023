@@ -36,6 +36,8 @@ unique(d2$code_region)
 unique(d2$unit)
 # junk column [SOLVED]
 
+# years are in different columns!
+
 unique(d2$period)
 # remove aggregate rows
 # use month numbers instead of names and strange codes
@@ -59,3 +61,23 @@ glimpse(d5)
 
 d6 = mutate(d5, code = as.numeric(code))
 glimpse(d6)
+
+unique(d6$period)
+
+?str_detect
+str_detect(d6$period, '-')
+
+d7 = filter(d6, !str_detect(period, '-'))
+unique(d7$period)
+glimpse(d6)
+glimpse(d7)
+
+dict = tibble(period = unique(d7$period), month_no = 1:12)
+dict
+glimpse(dict)
+glimpse(d7)
+
+d8 = left_join(d7, dict, by = 'period')
+glimpse(d8)
+
+d9 = select(d8, -period)
