@@ -12,7 +12,7 @@ glimpse(m3)
 
 m4 = select(m3, -month_no, -year, -date)
 
-m_final_bad = as_tsibble(m4, index=date2)
+# m_final_bad = as_tsibble(m4, index=date2)
 
 m_final = as_tsibble(m4, index=date2, key=code)
 glimpse(m_final)
