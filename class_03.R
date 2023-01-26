@@ -39,8 +39,8 @@ unique(d2$unit)
 # years are in different columns!
 
 unique(d2$period)
-# remove aggregate rows
-# use month numbers instead of names and strange codes
+# remove aggregate rows [SOLVED]
+# use month numbers instead of names and strange codes [SOLVED]
 
 
 d3 = select(d2, -unit)
@@ -81,3 +81,23 @@ d8 = left_join(d7, dict, by = 'period')
 glimpse(d8)
 
 d9 = select(d8, -period)
+
+# pivot_longer, pivot_wider
+
+?pivot_longer
+
+d10 = pivot_longer(d9, `2006`:`2020`, 
+                names_to = 'year', values_to = 'marriage')
+glimpse(d10)
+
+
+# remove comma and transform marrige into numeric
+d11 = mutate(d10, marriage = as.numeric(str_remove(marriage, ',')))
+
+glimpse(d11)
+
+d12 =  mutate(d11, year = as.numeric(year))
+d12
+
+export(d12, '~/Documents/icef_r4finance_2023/marriages-clean.csv')
+
