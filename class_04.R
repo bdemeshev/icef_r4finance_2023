@@ -101,6 +101,9 @@ marr_final = clean_anomalies(marr_recons)
 marr_rf_ts$marriage4 = marr_final$observed_cleaned
 gg_tsdisplay(marr_rf_ts, marriage4)
 
+autoplot(marr_rf_ts, marriage)
+
+autoplot(marr_rf_ts, marriage4)
 
 autoplot(marr_rf_ts, marriage3)
 
