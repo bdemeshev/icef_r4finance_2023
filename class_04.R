@@ -36,3 +36,34 @@ marr_rf_ts$marriage2[where_gaps] = NA
 gg_tsdisplay(marr_rf_ts, marriage2)
 
 
+ggplot_na_distribution(marr_rf_ts$marriage2)
+ggplot_na_distribution2(marr_rf_ts$marriage2)
+
+# simple linear imputation
+marr_imp = na_interpolation(marr_rf_ts$marriage2)
+
+ggplot_na_imputations(marr_rf_ts$marriage2, marr_imp)
+
+
+# imputation using conditional expected value for arima model
+
+# boring type conversion :(
+marr_old = as.ts(marr_rf_ts)
+marr2 = marr_old[, 6]
+marr2
+
+mod = arima(marr2, order = c(1, 1, 0),
+            seasonal = list(order = c(0, 1, 0)))$model
+mod
+
+# mod_bad = arima(marr_rf_ts$marriage2, order = c(0, 1, 0),
+#      seasonal = list(order = c(0, 1, 0)))$model
+
+marr_imp2 = na_kalman(marr2, model=mod)
+
+ggplot_na_imputations(marr_rf_ts$marriage2, marr_imp2)
+
+# imputation with auto arima
+marr_imp3 = na_kalman(marr2, model='auto.arima')
+
+ggplot_na_imputations(marr_rf_ts$marriage2, marr_imp3)
